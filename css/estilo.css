@@ -1,0 +1,309 @@
+
+:root {
+    --azul: #1f4e79;
+    --laranja: #e8711a;
+    --fundo: #eef2f6;
+    --texto: #2b2f33;
+    --texto-claro: #5f6b76;
+    --borda: #cfd8e1;
+    --erro: #b3261e;
+    --sucesso: #1e7b34;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.topo {
+    background: var(--azul);
+    color: #fff;
+    text-align: center;
+    padding: 32px 16px 56px;
+    border-bottom: 4px solid var(--laranja);
+}
+
+.marca {
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.marca span {
+    color: var(--laranja);
+}
+
+.slogan {
+    font-size: 14px;
+    opacity: 0.85;
+    margin-top: 4px;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+    margin-top: 16px;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+}
+
+.menu a:hover,
+.menu a.atual {
+    color: var(--laranja);
+    border-bottom-color: var(--laranja);
+}
+
+.conteudo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 0 16px;
+}
+
+.cartao {
+    background: #fff;
+    width: 100%;
+    max-width: 380px;
+    margin-top: -32px;
+    margin-bottom: 32px;
+    padding: 28px 24px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    align-self: flex-start;
+}
+
+.cartao h2 {
+    color: var(--azul);
+    font-size: 22px;
+}
+
+.instrucao {
+    color: var(--texto-claro);
+    font-size: 14px;
+    margin: 4px 0 20px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--texto-claro);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 14px 0 6px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 14px;
+    font: inherit;
+    font-size: 16px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+}
+
+input:focus {
+    outline: 2px solid var(--laranja);
+    border-color: var(--laranja);
+}
+
+button {
+    width: 100%;
+    margin-top: 24px;
+    padding: 14px;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--laranja);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #cf5f0f;
+}
+
+.mensagem {
+    margin-top: 16px;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.mensagem.erro,
+.mensagem.sucesso {
+    padding: 11px 14px;
+}
+
+.mensagem.erro {
+    color: var(--erro);
+    background: #fdecea;
+}
+
+.mensagem.sucesso {
+    color: var(--sucesso);
+    background: #e7f5ea;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 32px;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+th, td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--borda);
+    vertical-align: middle;
+}
+
+th {
+    background: var(--azul);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:nth-child(odd) td {
+    background: #f6f8fa;
+}
+
+tr:hover td {
+    background: #fdf1e7;
+}
+
+/* Coluna de ações: botões sempre na mesma linha */
+td:last-child {
+    white-space: nowrap;
+    width: 1%;
+}
+
+.painel {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.painel .inserir {
+    width: auto;
+    margin: 16px 0;
+    padding: 10px 24px;
+}
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 8px 0 16px;
+}
+
+.filtros > div {
+    flex: 1;
+    min-width: 200px;
+}
+
+.total {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--azul);
+    margin-bottom: 12px;
+}
+
+.painel .cartao {
+    margin: 0 auto 16px;
+}
+
+button.secundario {
+    margin-top: 8px;
+    background: var(--texto-claro);
+}
+
+td button {
+    width: auto;
+    margin: 0;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+td button.excluir {
+    background: var(--erro);
+}
+
+.resultado {
+    text-align: center;
+    padding-top: 16px;
+}
+
+.resultado-icone {
+    width: 112px;
+    height: 112px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 112px;
+    color: #fff;
+}
+
+.resultado.sucesso .resultado-icone { background: var(--sucesso); }
+.resultado.erro .resultado-icone { background: var(--erro); }
+
+.resultado h3 {
+    font-size: 26px;
+}
+
+.resultado.sucesso h3 { color: var(--sucesso); }
+.resultado.erro h3 { color: var(--erro); }
+
+.resultado-nome {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 8px 0 4px;
+}
+
+@media (min-width: 768px) {
+    .topo {
+        padding: 48px 16px 72px;
+    }
+
+    .marca {
+        font-size: 34px;
+    }
+
+    .cartao {
+        padding: 36px 32px;
+    }
+}

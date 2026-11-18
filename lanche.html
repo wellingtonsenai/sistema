@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pegar lanche | Cantina MetalVale</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <header class="topo">
+        <h1 class="marca">Cantina <span>MetalVale</span></h1>
+        <p class="slogan">Retirada de lanches sem ficha de papel</p>
+        <nav id="menu" class="menu"></nav>
+    </header>
+
+    <main class="conteudo">
+        <section class="cartao">
+            <h2>Pegar lanche</h2>
+            <form onsubmit="darBaixa(event)">
+                <label for="matricula">Matrícula do aluno</label>
+                <input id="matricula" type="text" required autofocus autocomplete="off">
+                <button type="submit">Entregar lanche</button>
+            </form>
+            <p id="mensagem" class="mensagem" role="status" aria-live="polite"></p>
+        </section>
+    </main>
+
+
+    <script src="js/dados.js"></script>
+    <script src="js/funcoes.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+    exigirLogin();
+
+    function darBaixa(evento) {
+        evento.preventDefault();
+        const campo = document.getElementById('matricula');
+        const resultado = registrarEntrega(campo.value);
+        if (resultado.ok) {
+            mostrarMensagem('Lanche entregue: ' + resultado.aluno.nome + ' (' + resultado.aluno.turma + ')', 'sucesso');
+        } else {
+            mostrarMensagem(resultado.erro, 'erro');
+        }
+        campo.value = '';
+        campo.focus();
+    }
+    </script>
+
+</body>
+</html>

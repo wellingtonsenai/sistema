@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entregues | Cantina MetalVale</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <header class="topo">
+        <h1 class="marca">Cantina <span>MetalVale</span></h1>
+        <p class="slogan">Retirada de lanches sem ficha de papel</p>
+        <nav id="menu" class="menu"></nav>
+    </header>
+
+    <main class="conteudo">
+        <div class="painel">
+            <div class="filtros">
+                <div>
+                    <label for="data">Dia</label>
+                    <input id="data" type="date" onchange="mostrarEntregas()">
+                </div>
+                <div>
+                    <label for="turma">Turma</label>
+                    <select id="turma" onchange="mostrarEntregas()">
+                        <option value="">Todas as turmas</option>
+                    </select>
+                </div>
+            </div>
+
+            <p id="total" class="total"></p>
+
+            <table>
+                <thead>
+                    <tr><th>Horário</th><th>Aluno</th><th>Matrícula</th><th>Turma</th><th>Entregue por</th></tr>
+                </thead>
+                <tbody id="lista"></tbody>
+            </table>
+        </div>
+    </main>
+
+
+    <script src="js/dados.js"></script>
+    <script src="js/funcoes.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+    exigirSupervisor();
+
+    // Coloca as turmas no select (uma vez, quando a página abre)
+    let turmas = listarTurmas();
+    for (let i = 0; i < turmas.length; i++) {
+        document.getElementById('turma').innerHTML += '<option value="' + turmas[i].id + '">' + turmas[i].nome + '</option>';
+    }
+
+    // A página abre no dia de hoje
+    document.getElementById('data').value = hoje();
+
+    // Desenha uma linha da tabela para cada lanche entregue
+    function mostrarEntregas() {
+        let data = document.getElementById('data').value;
+        let turma = document.getElementById('turma').value;
+        let entregas = listarEntregas(data, turma);
+
+        let linhas = '';
+        for (let i = 0; i < entregas.length; i++) {
+            let entrega = entregas[i];
+            linhas += '<tr>';
+            linhas += '<td>' + entrega.hora + '</td>';
+            linhas += '<td>' + entrega.nome + '</td>';
+            linhas += '<td>' + entrega.matricula + '</td>';
+            linhas += '<td>' + entrega.turma + '</td>';
+            linhas += '<td>' + entrega.atendente + '</td>';
+            linhas += '</tr>';
+        }
+        document.getElementById('lista').innerHTML = linhas;
+        document.getElementById('total').textContent = 'Lanches entregues: ' + entregas.length;
+    }
+
+    mostrarEntregas();
+    </script>
+
+</body>
+</html>
